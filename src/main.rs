@@ -28,7 +28,7 @@ fn run() -> io::Result<()> {
         .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidInput, "Invalid project folder name"))?;
 
     // Relative to Coalesce's executable, rather than the shell's working directory.
-    let output_dir = std::path::PathBuf::from("./coalesced").join(project_name);
+    let output_dir = PathBuf::from("./coalesced").join(project_name);
     fs::create_dir_all(&output_dir)?;
     let output_file = output_dir.join(format!("{project_name}.md"));
 
